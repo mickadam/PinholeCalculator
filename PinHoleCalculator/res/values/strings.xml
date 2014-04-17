@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="com.google.ads.AdView">
+    <attr name="adSize">
+          <enum name="BANNER" value="1"/>
+          <enum name="IAB_MRECT" value="2"/>
+          <enum name="IAB_BANNER" value="3"/>
+          <enum name="IAB_LEADERBOARD" value="4"/>
+    </attr>
+    <attr name="adUnitId" format="string"/>
+  	</declare-styleable>
+  
+	<string name="app_name">PinHoleCalculator</string>
+	
+	<string name="nan">---</string>
+	
+	<item name="defaultIso" format="integer" type="integer">400</item>
+	<item name="lightWaveLength" format="float" type="attr">0.00055</item>
+	<item name="lghtWLgth" format="float" type="attr">0.00055</item>
+	<item name="cstLordRayLeigh" format="float" type="attr">1.91</item>
+	
+	
+	<!-- Main.xml -->
+	<string name="diamFoc">Diameter &amp; Focal Length Calculation</string>
+	<string name="mesureDExpo">Exposure Metering</string>
+	<string name="mesStenop">My Pinhole Collection</string>
+	<string name="disclamer">PinHoleCalculator by Mickaël ADAM</string>
+	
+	<!-- diamfoc.xml -->
+	<string name="diametre">Diameter (mm):</string>
+ 	<string name="focaleOptimale">->Optimal focal (mm):</string>
+	<string name="focale">Focal (mm):</string>
+	<string name="diametreOptimal">->Optimal diameter (mm):</string>
+	<string name="ouverture">F-Stop(Aperture):</string>
+    
+	<!-- exposition.xml  -->
+	<string name="vitesseMesuree">Measured speed:</string>
+	<string name="ouvertureDeMesure">Measuring aperture:</string>
+	<string name="IsoDeMesure">Measuring Iso:</string>
+	<string name="valeurDExposition">Exposition Value:</string>
+	<string name="ouvertureDuStenope">Pinhole aperture:</string>
+	<string name="typeDePapier">Paper type:</string>
+	<string name="IsoDuPapier">Paper Iso:</string>
+	<string name="vitesse">Calculated speed:</string>
+	<string name="mesurer">Measure EV</string> 
+	
+	<!-- mesStenopé.xml -->
+	<string name="nouveau">New</string> 
+    <string name="mesStenopes">- My Pinhole Collection -</string> 
+    
+    <!-- nouveaustenope.xml -->
+    <string name="nouveauStenop">New PinHole</string> 
+    <string name="nom">Name:</string> 
+    <string name="description">Description:</string> 
+    <string name="sauver">Save</string> 
+    
+    <!-- MesStenopes.java -->
+    <string name="toutEffacer">Delete All</string>
+	<string name="action">Action</string>
+	<string name="editer">Edit</string>
+	<string name="supprimer">Delete</string>
+
+	<!-- Exposition.java -->
+	<string name="nonSupportee">not supported</string>
+	<string name="papier">Paper </string> 
+
+	<dimen name="taillePolice2">25sp</dimen>
+	<dimen name="taillePolice1">14sp</dimen>
+	
+	<string name="prendrePhoto">Take picture</string>
+	
+	<string name="calculer">Calculate EV</string>
+	
+	<string name="calculerVitesse">Calculate speed</string>
+	   
+	<string name="dimensionPapier">Paper dimension (mm):</string> 
+	<string name="angle">Angle:</string>
+	<color name="color01">#808080</color>
+	<string name="btnCompteurStart">Start</string>
+	<string name="btnCompteurStop">Stop</string>
+	<string name="Compteur">Timer:</string> 
+	<string name="CompteurFini">Done !</string>
+	<string name="ou">or</string>
+	<string name="imageText">All right reserved. Stéphane Adam. 2012. www.stephaneadam.fr</string>
+	<string name="imageContentDescription">Main image</string>
+	
+	<string name="DefaultMeasuringIsoValue">400</string>
+	<string name="DefaultMeasuringApertureValue">22</string>
+	   
+	
+</resources>

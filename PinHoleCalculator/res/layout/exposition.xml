@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ScrollView01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:layout_gravity="center">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="20dp"
+    android:gravity="center_horizontal|left"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/vitesseMesuree"
+            android:textSize="@dimen/taillePolice1" />
+
+        <EditText
+            android:id="@+id/exposition_EdTxtVitesseIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/ouvertureDeMesure"
+            android:textSize="@dimen/taillePolice1" />
+
+        <EditText
+            android:id="@+id/exposition_EdTxtfNIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="@string/DefaultMeasuringApertureValue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/IsoDeMesure"
+            android:textSize="@dimen/taillePolice1" />
+
+        <EditText
+            android:id="@+id/exposition_EdTxtIsoIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="@string/DefaultMeasuringIsoValue" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/valeurDExposition"
+        android:textSize="@dimen/taillePolice1" />
+
+    <Button
+        android:id="@+id/exposition_btnCalcEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/ou"
+        android:textSize="@dimen/taillePolice1" />
+
+    <Button
+        android:id="@+id/exposition_btnMesurer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mesurer" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/exposition_EdTxtEV"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal">
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10dp"
+        android:text="@string/ouvertureDuStenope"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/exposition_EdTxtfN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal" >
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10dp"
+        android:text="@string/typeDePapier"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/exposition_TypePapier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="10dp"
+        android:text="@string/IsoDuPapier"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/exposition_EdTxtIso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" 
+        android:text="@integer/defaultIso">
+    </EditText>
+
+    <Button
+        android:id="@+id/bntCalcVit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculerVitesse" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/vitesse"
+        android:textSize="@dimen/taillePolice1" />
+
+    <TextView
+        android:id="@+id/exposition_txtVitesse"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/nan"
+        android:textSize="@dimen/taillePolice2" >
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/Compteur"
+        android:textSize="@dimen/taillePolice1" />
+
+    <Button
+        android:id="@+id/bntCompteur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnCompteurStart" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text=""
+        android:textSize="@dimen/taillePolice1" />
+
+</LinearLayout>
+
+</ScrollView>

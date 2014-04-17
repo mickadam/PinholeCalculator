@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DiamFoc" >
+        
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center|center_vertical|left"
+    android:orientation="vertical"
+    android:paddingTop="20dp" >
+
+    <TextView
+        android:id="@+id/TextViewDiam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/diametre"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/EdTxtDiam"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.64"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/focaleOptimale"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewFocOpt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/nan"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewFocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/taillePolice1"
+        android:text="@string/focale" >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/EdTxtFoc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.80"
+            android:inputType="numberDecimal"
+            android:text="" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/diametreOptimal"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewDiamOpt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/nan"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="@string/ouverture"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewFNum"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:background="@color/color01"
+        android:gravity="center"
+        android:text="@string/nan"
+        android:textSize="@dimen/taillePolice2" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewPaperDim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/dimensionPapier"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/EdTxtX"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.80"
+            android:inputType="numberDecimal" >
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="X"
+            android:textSize="@dimen/taillePolice1"
+            tools:ignore="HardcodedText" >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/EdTxtY"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.80"
+            android:inputType="numberDecimal" >
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="@string/angle"
+        android:textSize="@dimen/taillePolice1" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewAngle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@color/color01"
+        android:gravity="center"
+        android:text="@string/nan"
+        android:textSize="@dimen/taillePolice2" >
+    </TextView>
+</LinearLayout>
+
+</ScrollView>
