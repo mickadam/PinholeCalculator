@@ -53,13 +53,4 @@
     </LinearLayout>
     <!-- Pour plus tard -->
 
-    <com.google.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        ads:adSize="BANNER"
-        ads:adUnitId="a14ed89103db32b" />
-
 </LinearLayout>
