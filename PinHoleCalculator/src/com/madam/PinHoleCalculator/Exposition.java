@@ -1,3 +1,13 @@
+/***************************************************************
+ * 
+ * Licensed under the Creative Commons.
+ * Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/
+ * 
+ * Contributors:
+ *  Mickaël ADAM - mickael.adam29@gmail.com - Initial API and implementation
+ * 
+ ***************************************************************/
 package com.madam.PinHoleCalculator;
 
 import java.text.DecimalFormat;
@@ -510,6 +520,13 @@ public class Exposition extends Activity implements OnClickListener,
 
 	// Old
 	// Calcul de reciprocité pour les papier Ilford
+	/**
+	 * Reprocite ilford1.
+	 * 
+	 * @param vit
+	 *            the vit
+	 * @return the float
+	 */
 	@SuppressWarnings("unused")
 	private float reprociteIlford1(double vit) {
 
