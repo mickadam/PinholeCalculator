@@ -77,6 +77,7 @@ public class NouveauStenope extends Activity implements OnClickListener {
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -84,13 +85,13 @@ public class NouveauStenope extends Activity implements OnClickListener {
 
 		// ((Button)findViewById(R.nvxStenope.btnSave)).setOnClickListener(this);
 
-		EdTxtNom = (EditText) this.findViewById(R.nvxStenope.EdTxtNom);
-		EdTxtDesc = (EditText) this.findViewById(R.nvxStenope.EdTxtDesc);
+		EdTxtNom = (EditText) this.findViewById(R.id.nvxStenope_EdTxtNom);
+		EdTxtDesc = (EditText) this.findViewById(R.id.nvxStenope_EdTxtDesc);
 		EdTxtOuverture = (EditText) this
-				.findViewById(R.nvxStenope.EdTxtOuverture);
-		EdTxtFocale = (EditText) this.findViewById(R.nvxStenope.EdTxtFocale);
-		btnSave = (Button) findViewById(R.nvxStenope.btnSave);
-		photoSteno = (ImageView) this.findViewById(R.nvxStenope.ImageView01);
+				.findViewById(R.id.nvxStenope_EdTxtOuverture);
+		EdTxtFocale = (EditText) this.findViewById(R.id.nvxStenope_EdTxtFocale);
+		btnSave = (Button) findViewById(R.id.nvxStenope_btnSave);
+		photoSteno = (ImageView) this.findViewById(R.id.nvxStenope_ImageView01);
 
 		btnSave.setOnClickListener(this);
 		photoSteno.setOnClickListener(this);
@@ -183,9 +184,8 @@ public class NouveauStenope extends Activity implements OnClickListener {
 			} else {
 				chemin = "" + NouveauStenope.this.getFilesDir() + "/"
 						+ dbItemId + ".png";
-				db.modifierUnStenope((Integer) dbItemId,
-						"" + EdTxtNom.getText(), "" + EdTxtDesc.getText(), ""
-								+ EdTxtOuverture.getText(),
+				db.modifierUnStenope(dbItemId, "" + EdTxtNom.getText(), ""
+						+ EdTxtDesc.getText(), "" + EdTxtOuverture.getText(),
 						"" + EdTxtFocale.getText(), chemin);
 			}
 

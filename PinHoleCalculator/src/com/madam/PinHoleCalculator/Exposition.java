@@ -36,49 +36,88 @@ import android.widget.Toast;
 
 import com.madam.PinHoleCalculator2.R;
 
-//Pour le simulateur de capteur:
-//import org.openintents.sensorsimulator.hardware.Sensor;
-//import org.openintents.sensorsimulator.hardware.SensorEvent;
-//import org.openintents.sensorsimulator.hardware.SensorEventListener;
-//import org.openintents.sensorsimulator.hardware.SensorManagerSimulator;
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Exposition.
+ */
 public class Exposition extends Activity implements OnClickListener,
 		OnItemSelectedListener, SensorEventListener {
 
+	/** The btn mesur. */
 	private Button btnMesur;
 
-	// private Camera camera;
-	// private SurfaceView view;
-
+	/** The Ed txt ev. */
 	private EditText EdTxtEV;
+
+	/** The Ed txt diaph in. */
 	private EditText EdTxtDiaphIn;
+
+	/** The Ed txt vitesse in. */
 	private EditText EdTxtVitesseIn;
+
+	/** The Ed txt iso in. */
 	private EditText EdTxtIsoIn;
+
+	/** The Ed txt diaph steno. */
 	private EditText EdTxtDiaphSteno;
+
+	/** The Ed txt iso steno. */
 	private EditText EdTxtIsoSteno;
+
+	/** The txt vitesse. */
 	private TextView txtVitesse;
+
+	/** The Types papier array. */
 	private String[] TypesPapierArray;
+
+	/** The spin types papier. */
 	private Spinner spinTypesPapier;
+
+	/** The Id papier. */
 	private Integer IdPapier = 0;
 
-	// /** * Le sensor manager */
+	/** The my sensor manager. */
 	private SensorManager mySensorManager;
-	// Pour le simulateur de capteur:
-	// private SensorManagerSimulator mySensorManager;
+
+	/** The light sensor. */
 	private Sensor lightSensor;
+
+	/** The current light. */
 	private float currentLight = 0;
+
+	/** The ev. */
 	private float EV;
 
+	/** The btn calc ev. */
 	private Button btnCalcEV;
+
+	/** The btn calc vit. */
 	private Button btnCalcVit;
+
+	/** The btn compteur. */
 	private Button btnCompteur;
+
+	/** The b run timer. */
 	private boolean bRunTimer = false;
+
+	/** The t timer. */
 	private CountDownTimer tTimer;
+
+	/** The temps restant. */
 	protected long tempsRestant = 0;
 
+	/** The btn test. */
 	private Button btnTest;
+
+	/** The layout test. */
 	private LinearLayout layoutTest;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setVolumeControlStream(AudioManager.STREAM_SYSTEM);
@@ -87,11 +126,6 @@ public class Exposition extends Activity implements OnClickListener,
 
 		// --gestion du capteur de luminausité--//
 		mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
-		// Pour le simulateur de capteur
-		// mySensorManager = SensorManagerSimulator.getSystemService(this,
-		// SENSOR_SERVICE);
-		// mySensorManager.connectSimulator();
 
 		lightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 		// -------------------------------------//
@@ -149,6 +183,11 @@ public class Exposition extends Activity implements OnClickListener,
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View view) {
 		DecimalFormat df2 = new DecimalFormat("@@@@");
 
@@ -161,35 +200,6 @@ public class Exposition extends Activity implements OnClickListener,
 						.show();
 			}
 
-			// try {
-			// if (camera == null){
-			// camera = Camera.open();
-			// }
-			// if (camera != null){
-			// camera.setParameters(camera.getParameters());
-			// Parameters param = camera.getParameters();
-			//
-			// int ExpComp = camera.getParameters().getExposureCompensation();
-			// float ExpCompStep =
-			// camera.getParameters().getExposureCompensationStep();
-			// param.setExposureCompensation(6);
-			//
-			// camera.setParameters(param);
-			//
-			// if (ExpComp*ExpCompStep==0){
-			// Toast.makeText(this, R.string.nonSupportee,
-			// Toast.LENGTH_SHORT).show();
-			// }else{
-			// EV = (float) (ExpComp*ExpCompStep);
-			// EdTxtEV.setText(""+EV);
-			// }
-			// }
-			//
-			// } catch (Exception e) {
-			// Toast.makeText(this, R.string.nonSupportee,
-			// Toast.LENGTH_SHORT).show();
-			// e.printStackTrace();
-			// }
 		}
 		if (view == btnCalcEV) {
 			EdTxtEV.setText("" + df2.format(CalculeEV()));
@@ -197,7 +207,7 @@ public class Exposition extends Activity implements OnClickListener,
 		if (view == btnCalcVit) {
 
 			double vitesse = CalculeVitesse();
-			afficherVitesse(vitesse);
+			showSpeed(vitesse);
 			tempsRestant = 0;
 		}
 		if (view == btnCompteur) {
@@ -211,6 +221,9 @@ public class Exposition extends Activity implements OnClickListener,
 		}
 	}
 
+	/**
+	 * Gestion compteur.
+	 */
 	@SuppressLint("UseValueOf")
 	private void GestionCompteur() {
 
@@ -226,14 +239,16 @@ public class Exposition extends Activity implements OnClickListener,
 			if (CalculeVitesse() != 0) {
 				tTimer = new CountDownTimer(lVitesse, 100) {
 
+					@Override
 					public void onTick(long millisUntilFinished) {
 						// txtVitesse.setText(""+millisUntilFinished / 100);
-						afficherVitesse(((double) millisUntilFinished) / 1000);
+						showSpeed(((double) millisUntilFinished) / 1000);
 						tempsRestant = millisUntilFinished;
 						btnCompteur.setText(R.string.btnCompteurStop);
 						bRunTimer = true;
 					}
 
+					@Override
 					public void onFinish() {
 						txtVitesse.setText(R.string.CompteurFini);
 						btnCompteur.setText(R.string.btnCompteurStart);
@@ -252,6 +267,12 @@ public class Exposition extends Activity implements OnClickListener,
 
 	}
 
+	/**
+	 * Joue son.
+	 *
+	 * @param b
+	 *            the b
+	 */
 	protected void joueSon(boolean b) {
 		new MediaPlayer();
 		MediaPlayer mp = MediaPlayer.create(this, (R.raw.buzz));
@@ -259,31 +280,42 @@ public class Exposition extends Activity implements OnClickListener,
 		mp.start();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
-		// désenregistrer notre écoute du capteur
+		// Unregister the sensor listener
 		mySensorManager.unregisterListener(this, lightSensor);
-		// Pour le simulateur de capteur:
-		// mySensorManager.unregisterListener(this);
 		super.onPause();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
-		/* * enregistrer notre écoute du capteur */
+		// Register the sensor listener
 		mySensorManager.registerListener(this, lightSensor,
 				SensorManager.SENSOR_DELAY_GAME);
-		// Pour le simulateur de capteur:
-		// mySensorManager.registerListener(this,
-		// mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
-		// SensorManager.SENSOR_DELAY_FASTEST);
 		super.onResume();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android
+	 * .widget.AdapterView, android.view.View, int, long)
+	 */
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
 
-		// selection of the paper type
+		// Selection of the paper type
 		Toast.makeText(
 				parent.getContext(),
 				this.getString(R.string.papier) + ": "
@@ -293,7 +325,8 @@ public class Exposition extends Activity implements OnClickListener,
 		IdPapier = pos;
 
 		String sT = parent.getItemAtPosition(pos).toString();
-		// un iso dans le nom du papier
+		// Set the iso according to the name of the paper
+		// TODO have good data structure of paper information
 		if (sT.contains("400")) {
 			EdTxtIsoSteno.setText("400");
 		} else if (sT.contains("100")) {
@@ -306,25 +339,30 @@ public class Exposition extends Activity implements OnClickListener,
 
 	}
 
-	// Show the speed
-	private void afficherVitesse(double vitesse) {
+	/**
+	 * Show the speed at the good format.
+	 *
+	 * @param speed
+	 *            the vitesse
+	 */
+	private void showSpeed(double speed) {
 		DecimalFormat df = new DecimalFormat("#######");
 
-		if (vitesse != 0) {
+		if (speed != 0) {
 
 			String strVitesse = "";
 
-			if (vitesse < 1) {
-				vitesse = 1 / vitesse;
-				strVitesse = "1/" + df.format(vitesse) + " s";
+			if (speed < 1) {
+				speed = 1 / speed;
+				strVitesse = "1/" + df.format(speed) + " s";
 			} else {
-				int heures = (int) vitesse / 3600;
+				int heures = (int) speed / 3600;
 				if (heures >= 1)
 					strVitesse = "" + df.format(heures) + "h ";
-				int minutes = (int) ((vitesse - 3600 * heures) / 60);
+				int minutes = (int) ((speed - 3600 * heures) / 60);
 				if (minutes >= 1)
 					strVitesse = strVitesse + df.format(minutes) + "m ";
-				double seconde = vitesse - 3600 * heures - 60 * minutes;
+				double seconde = speed - 3600 * heures - 60 * minutes;
 				df.applyPattern("#######.#");
 				if (seconde >= 1)
 					strVitesse = strVitesse + df.format(seconde) + "s";
@@ -335,14 +373,33 @@ public class Exposition extends Activity implements OnClickListener,
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.widget.AdapterView.OnItemSelectedListener#onNothingSelected(android
+	 * .widget.AdapterView)
+	 */
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// Do nothing
 	}
 
+	/**
+	 * Log2.
+	 *
+	 * @param num
+	 *            the num
+	 * @return the float
+	 */
 	public static float log2(float num) {
 		return (float) (Math.log(num) / Math.log(2));
 	}
 
+	/**
+	 * Calculate the Exposition Value from .
+	 *
+	 * @return the double
+	 */
 	private double CalculeEV() {
 		float t = 1;
 		float Iso;
@@ -380,6 +437,11 @@ public class Exposition extends Activity implements OnClickListener,
 		return EV = log2((N * N) / (t)) - log2(Iso / 100);
 	}
 
+	/**
+	 * Calcule vitesse.
+	 *
+	 * @return the double
+	 */
 	private double CalculeVitesse() {
 		double calc = 0;
 
@@ -554,10 +616,24 @@ public class Exposition extends Activity implements OnClickListener,
 		return Vitesse;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.hardware.SensorEventListener#onAccuracyChanged(android.hardware
+	 * .Sensor, int)
+	 */
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.hardware.SensorEventListener#onSensorChanged(android.hardware
+	 * .SensorEvent)
+	 */
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_LIGHT)
 			currentLight = event.values[0];

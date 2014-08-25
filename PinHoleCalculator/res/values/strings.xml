@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="com.google.ads.AdView">
-    <attr name="adSize">
-          <enum name="BANNER" value="1"/>
-          <enum name="IAB_MRECT" value="2"/>
-          <enum name="IAB_BANNER" value="3"/>
-          <enum name="IAB_LEADERBOARD" value="4"/>
-    </attr>
-    <attr name="adUnitId" format="string"/>
-  	</declare-styleable>
-  
+     
 	<string name="app_name">PinHoleCalculator</string>
 	
 	<string name="nan">---</string>
@@ -84,8 +75,10 @@
 	<string name="imageText">All right reserved. Stéphane Adam. 2012. www.stephaneadam.fr</string>
 	<string name="imageContentDescription">Main image</string>
 	
-	<string name="DefaultMeasuringIsoValue">400</string>
-	<string name="DefaultMeasuringApertureValue">22</string>
+	<string name="DefaultMeasuringIsoValue" translatable="false">400</string>
+	<string name="DefaultMeasuringApertureValue" translatable="false">22</string>
+	<string name="itemimage" translatable="false">ItemImage</string>
+	<string name="new_pinhole_picture">New pinhole picture</string>
 	   
 	
 </resources>

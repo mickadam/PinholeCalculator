@@ -5,19 +5,17 @@
 	android:layout_height="wrap_content" 
 	android:orientation="horizontal">
 	
-	<ImageView android:id="@+stenope_Item/ImageView" 
+	<ImageView android:id="@+id/stenope_Item_ImageView" 
 	android:layout_height="100dp" 
 	android:layout_width="100dp" 
-	android:layout_marginLeft="10dp" android:layout_marginRight="10dp"></ImageView>
+	android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:contentDescription="@string/itemimage"></ImageView>
 	
 	<LinearLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" 
 		android:orientation="vertical">
 		
 		<LinearLayout
-			xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:orientation="horizontal">
@@ -31,11 +29,10 @@
 			<TextView 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content" 
-			android:id="@+stenope_Item/textNom"
+			android:id="@+id/stenope_Item_textNom"
 			/>
 		</LinearLayout>
 		<LinearLayout
-			xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:orientation="horizontal">
@@ -50,12 +47,11 @@
 			<TextView 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content" 
-			android:id="@+stenope_Item/TextFocale"
+			android:id="@+id/stenope_Item_TextFocale"
 			android:textColor="#FF808080"
 		/>
 		</LinearLayout>
 		<LinearLayout
-			xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:orientation="horizontal">
@@ -69,17 +65,16 @@
 			<TextView 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content" 
-			android:id="@+stenope_Item/TextDiaphragme"
+			android:id="@+id/stenope_Item_TextDiaphragme"
 			android:textColor="#FF808080"
 			/>
 		</LinearLayout>
 		<LinearLayout
-			xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:orientation="horizontal">
 			<TextView android:layout_height="wrap_content" 
-			android:id="@+stenope_Item/TextDescription" 
+			android:id="@+id/stenope_Item_TextDescription" 
 			android:layout_width="fill_parent" 
 			android:textColor="#FF808080"></TextView>
 		

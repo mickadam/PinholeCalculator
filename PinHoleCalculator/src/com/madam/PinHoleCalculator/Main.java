@@ -10,9 +10,6 @@
  ***************************************************************/
 package com.madam.PinHoleCalculator;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -24,22 +21,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
 import com.madam.PinHoleCalculator2.R;
 
+/**
+ * The Class Main.
+ */
 public class Main extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 
 	LinearLayout Mainlayout;
 	TextView txtVHead;
 
-	Button btnDiamFoc;
-	Button btnExpo;
-	Button btnMesStenop;
-
-	// DiamFoc diamFoc;
-	// Exposition ExpoActivity;
+	Button calculateDiameterFocalButton;
+	Button expositionButton;
+	Button myPinholeCollectionButton;
 
 	/*
 	 * (non-Javadoc)
@@ -52,64 +47,45 @@ public class Main extends Activity implements OnClickListener {
 		this.setVolumeControlStream(AudioManager.STREAM_SYSTEM);
 		setContentView(R.layout.main);
 
-		btnDiamFoc = (Button) this.findViewById(R.id.btnDiamFoc);
-		btnExpo = (Button) this.findViewById(R.id.btnMesExp);
-		btnMesStenop = (Button) this.findViewById(R.id.btnMesStenop);
+		calculateDiameterFocalButton = (Button) this
+				.findViewById(R.id.btnDiamFoc);
+		expositionButton = (Button) this.findViewById(R.id.btnMesExp);
+		myPinholeCollectionButton = (Button) this
+				.findViewById(R.id.btnMesStenop);
 
-		// Mainlayout = new LinearLayout(this);
-		// txtVHead = new TextView(this);
-		// btnDiamFoc = new Button(this);
-		// btnExpo = new Button(this);
-		// btnMesStenop = new Button(this);
-
-		// Mainlayout.setOrientation(LinearLayout.VERTICAL);
-		// Mainlayout.addView(txtVHead);
-		// Mainlayout.addView(btnDiamFoc);
-		// Mainlayout.addView(btnExpo);
-		// Mainlayout.addView(btnMesStenop);
-
-		// txtVHead.setText("PinHoleCalculator by Mickael ADAM");
-		// btnDiamFoc.setText("Diamètre & Focal");
-		// btnExpo.setText("Mesure d'Exposition");
-		// btnMesStenop.setText("Mes Sténopés");
-
-		// setContentView(Mainlayout);
-
-		btnDiamFoc.setOnClickListener(this);
-		btnExpo.setOnClickListener(this);
-		btnMesStenop.setOnClickListener(this);
-
-		AdView adview = (AdView) findViewById(R.id.adView);
-		AdRequest re = new AdRequest();
-		// adview.loadAd(new AdRequest());
-
-		Set<String> keywordSet = new HashSet<String>(); // on crée notre Set
-		keywordSet.add(new String("Camera"));
-		keywordSet.add(new String("photo"));
-		keywordSet.add(new String("pinhole"));
-		keywordSet.add(new String("paper"));
-
-		re.setKeywords(keywordSet);
-		adview.loadAd(re);
+		calculateDiameterFocalButton.setOnClickListener(this);
+		expositionButton.setOnClickListener(this);
+		myPinholeCollectionButton.setOnClickListener(this);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View v) {
-		if (v == btnDiamFoc) {
+		if (v == calculateDiameterFocalButton) {
 			Intent intent = new Intent(Main.this, DiamFoc.class);
 			startActivity(intent);
 		} else {
-			if (v == btnExpo) {
+			if (v == expositionButton) {
 				Intent intent = new Intent(Main.this, Exposition.class);
 				startActivity(intent);
 			}
-			if (v == btnMesStenop) {
+			if (v == myPinholeCollectionButton) {
 				Intent intent = new Intent(Main.this, MesStenopes.class);
 				startActivity(intent);
 			}
 		}
 	}
 
-	public void ImageTaost(View view) {
+	/**
+	 * Image toast.
+	 *
+	 * @param view
+	 *            the view
+	 */
+	public void imageToast(View view) {
 		Toast.makeText(this, R.string.imageText, Toast.LENGTH_LONG).show();
 	}
 

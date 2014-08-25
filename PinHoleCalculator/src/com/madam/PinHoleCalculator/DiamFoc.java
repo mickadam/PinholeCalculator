@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import com.madam.PinHoleCalculator2.R;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DiamFoc.
  */
@@ -38,29 +37,29 @@ public class DiamFoc extends Activity implements OnKeyListener {
 	/** The layout main. */
 	LinearLayout layoutMain;
 
-	/** The layout diam. */
-	LinearLayout layoutDiam;
+	/** The layout diameter. */
+	LinearLayout layoutDiameter;
 
-	/** The layout foc. */
-	LinearLayout layoutFoc;
+	/** The layout focal. */
+	LinearLayout layoutFocal;
 
-	/** The ed txt diam. */
-	EditText edTxtDiam;
+	/** The ed txt diameter. */
+	EditText edTxtDiameter;
 
 	/** The btn diam mm. */
-	Button btnDiamMM;
+	Button btnDiameterMM;
 
-	/** The Optimal foc. */
-	TextView OptimalFoc;
+	/** The Optimal focal. */
+	TextView optimalFocal;
 
-	/** The ed txt foc. */
-	EditText edTxtFoc;
+	/** The ed txt focal. */
+	EditText edTxtFocal;
 
-	/** The btn foc mm. */
-	Button btnFocMM;
+	/** The btn focal mm. */
+	Button btnFocalMM;
 
-	/** The Optimal diam. */
-	private TextView OptimalDiam;
+	/** The Optimal diameter. */
+	private TextView optimalDiameter;
 
 	/** The txt diaph. */
 	private TextView txtDiaph;
@@ -68,11 +67,11 @@ public class DiamFoc extends Activity implements OnKeyListener {
 	/** The txt angle. */
 	private TextView txtAngle;
 
-	/** The ed txt x. */
-	private EditText edTxtX;
+	/** The ed txt Angle x. */
+	private EditText edTxtAngleX;
 
-	/** The ed txt y. */
-	private EditText edTxtY;
+	/** The ed txt Angle y. */
+	private EditText edTxtAngleY;
 
 	/*
 	 * (non-Javadoc)
@@ -84,25 +83,22 @@ public class DiamFoc extends Activity implements OnKeyListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diamfoc);
 
-		// txtDiam = (TextView) this.findViewById(R.id.TextViewDiam);
-		OptimalFoc = (TextView) this.findViewById(R.id.TextViewFocOpt);
-		edTxtDiam = (EditText) this.findViewById(R.id.EdTxtDiam);
+		optimalFocal = (TextView) this.findViewById(R.id.TextViewFocOpt);
+		edTxtDiameter = (EditText) this.findViewById(R.id.EdTxtDiam);
 
-		// txtFoc = (TextView) this.findViewById(R.id.TextViewFocal);
-		OptimalDiam = (TextView) this.findViewById(R.id.TextViewDiamOpt);
-		edTxtFoc = (EditText) this.findViewById(R.id.EdTxtFoc);
+		optimalDiameter = (TextView) this.findViewById(R.id.TextViewDiamOpt);
+		edTxtFocal = (EditText) this.findViewById(R.id.EdTxtFoc);
 
 		txtDiaph = (TextView) this.findViewById(R.id.TextViewFNum);
 
 		txtAngle = (TextView) this.findViewById(R.id.TextViewAngle);
-		edTxtX = (EditText) this.findViewById(R.id.EdTxtX);
-		edTxtY = (EditText) this.findViewById(R.id.EdTxtY);
+		edTxtAngleX = (EditText) this.findViewById(R.id.EdTxtX);
+		edTxtAngleY = (EditText) this.findViewById(R.id.EdTxtY);
 
-		edTxtDiam.setOnKeyListener(this);
-		edTxtFoc.setOnKeyListener(this);
-		edTxtX.setOnKeyListener(this);
-		edTxtY.setOnKeyListener(this);
-
+		edTxtDiameter.setOnKeyListener(this);
+		edTxtFocal.setOnKeyListener(this);
+		edTxtAngleX.setOnKeyListener(this);
+		edTxtAngleY.setOnKeyListener(this);
 	}
 
 	/*
@@ -111,24 +107,23 @@ public class DiamFoc extends Activity implements OnKeyListener {
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
-	// Création du menu principal
+	// Create the main menu
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 100, 0, R.string.sauver);
 		return true;
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * Selection of an menu item
 	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */
 	@Override
-	// Selection d'un item du menu
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case 100:
 			Intent intent = new Intent(this, NouveauStenope.class);
-			intent.putExtra("Focale", edTxtFoc.getText().toString());
+			intent.putExtra("Focale", edTxtFocal.getText().toString());
 			intent.putExtra("Diaphragme", txtDiaph.getText().toString());
 			intent.putExtra("Angle", txtAngle.getText().toString());
 			this.startActivity(intent);
@@ -144,46 +139,48 @@ public class DiamFoc extends Activity implements OnKeyListener {
 	 * android.view.KeyEvent)
 	 */
 	public boolean onKey(View view, int arg1, KeyEvent arg2) {
-
+		// Define the decimal format to display diameter and focal
 		DecimalFormat df = new DecimalFormat("@@@");
-		float value;
-
-		if (view == edTxtDiam) {
-			value = calculFocal(edTxtDiam.getText());
-			if (value != -1) {
-				OptimalFoc.setText(df.format(value));
+		// if edition of the diameter
+		if (view == edTxtDiameter) {
+			// Calculate the focal
+			float calculatedFocal = calculFocal(edTxtDiameter.getText());
+			if (calculatedFocal != -1) {
+				// Set Optimal focal with good format
+				optimalFocal.setText(df.format(calculatedFocal));
 			}
 		} else {
-			if ((view == edTxtFoc)) {
-				value = calculDiametre(edTxtFoc.getText());
-				if (value != -1) {
-					OptimalDiam.setText(df.format(value));
+			if ((view == edTxtFocal)) {
+				float calculatedDiametre = calculDiametre(edTxtFocal.getText());
+				if (calculatedDiametre != -1) {
+					optimalDiameter.setText(df.format(calculatedDiametre));
 				}
-				value = calculAngle(edTxtX.getText(), edTxtX.getText(),
-						edTxtFoc.getText());
-				if (value != -1) {
-					txtAngle.setText(df.format(value) + "°");
+				float calculatedAngle = calculAngle(edTxtAngleX.getText(),
+						edTxtAngleX.getText(), edTxtFocal.getText());
+				if (calculatedAngle != -1) {
+					txtAngle.setText(df.format(calculatedAngle) + "°");
 				}
 			} else {
-				if (view == edTxtX || view == edTxtY) {
-					value = calculAngle(edTxtX.getText(), edTxtY.getText(),
-							edTxtFoc.getText());
-					if (value != -1) {
-						txtAngle.setText(df.format(value) + "°");
+				if (view == edTxtAngleX || view == edTxtAngleY) {
+					float calculatedAngle = calculAngle(edTxtAngleX.getText(),
+							edTxtAngleY.getText(), edTxtFocal.getText());
+					if (calculatedAngle != -1) {
+						txtAngle.setText(df.format(calculatedAngle) + "°");
 					}
 				}
 			}
 		}
 
-		value = calculFNumber(edTxtFoc.getText(), edTxtDiam.getText());
-		if (value != -1) {
-			txtDiaph.setText(df.format(value));
+		float calculatedFNumber = calculFNumber(edTxtFocal.getText(),
+				edTxtDiameter.getText());
+		if (calculatedFNumber != -1) {
+			txtDiaph.setText(df.format(calculatedFNumber));
 		}
 		return false;
 	}
 
 	/**
-	 * Calcul focal.
+	 * Calculate focal.
 	 * 
 	 * @param diametre
 	 *            the diametre
@@ -202,12 +199,12 @@ public class DiamFoc extends Activity implements OnKeyListener {
 				Float lightWaveLgth = Float
 						.valueOf(getString(R.attr.lightWaveLength));
 				Float cst = Float.valueOf(getString(R.attr.cstLordRayLeigh));
-				return (float) (((fDiam / cst) * (fDiam / cst)) / lightWaveLgth);
+				return ((fDiam / cst) * (fDiam / cst)) / lightWaveLgth;
 			} catch (NumberFormatException ex) {
-				return (float) -1;
+				return -1;
 			}
 		} else {
-			return (float) -1;
+			return -1;
 		}
 	}
 
@@ -229,17 +226,15 @@ public class DiamFoc extends Activity implements OnKeyListener {
 				Float lightWaveLgth = Float
 						.valueOf(getString(R.attr.lightWaveLength));
 				Float cst = Float.valueOf(getString(R.attr.cstLordRayLeigh));
-				return (float) ((float) cst * FloatMath.sqrt(fFoc
-						* lightWaveLgth));
+				return cst * FloatMath.sqrt(fFoc * lightWaveLgth);
 			} catch (NumberFormatException ex) {
-				return (float) -1;
+				return -1;
 			}
 		} else {
-			return (float) -1;
+			return -1;
 		}
 	}
 
-	// Calcul de l'ouverture
 	/**
 	 * Calcul f number.
 	 * 
@@ -264,12 +259,12 @@ public class DiamFoc extends Activity implements OnKeyListener {
 				Float fDiam = Float.valueOf(str);
 				Float fFoc = Float.valueOf(str2);
 
-				return (float) (fFoc / fDiam);
+				return fFoc / fDiam;
 			} catch (NumberFormatException ex) {
-				return (float) -1;
+				return -1;
 			}
 		} else {
-			return (float) -1;
+			return -1;
 		}
 	}
 
@@ -297,7 +292,7 @@ public class DiamFoc extends Activity implements OnKeyListener {
 			Float fY = Float.valueOf(strY);
 			Float fD = Float.valueOf(strD);
 			Float fH = Float.valueOf(FloatMath.sqrt((fX * fX) + (fY * fY)));
-			return (float) ((float) 2 * Math.atan(fH / (2 * fD)) * (180 / Math.PI));
+			return (float) (2 * Math.atan(fH / (2 * fD)) * (180 / Math.PI));
 		} else {
 			return -1;
 		}

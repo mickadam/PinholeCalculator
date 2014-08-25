@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_margin="50dp"
             android:src="@drawable/img01" 
-            android:onClick="ImageTaost"/>
+            android:onClick="imageToast"/>
 
         <Button
             android:id="@+id/btnDiamFoc"

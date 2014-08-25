@@ -180,9 +180,10 @@ public class MesStenopes extends ListActivity implements OnClickListener {
 
 		String[] columns = new String[] { "nom", "description", "focale",
 				"diaphragme", "URLimg" };
-		int[] to = new int[] { R.stenope_Item.textNom,
-				R.stenope_Item.TextDescription, R.stenope_Item.TextFocale,
-				R.stenope_Item.TextDiaphragme, R.stenope_Item.ImageView };
+		int[] to = new int[] { R.id.stenope_Item_textNom,
+				R.id.stenope_Item_TextDescription,
+				R.id.stenope_Item_TextFocale, R.id.stenope_Item_TextDiaphragme,
+				R.id.stenope_Item_ImageView };
 
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				R.layout.stenope_item, cursor, columns, to);

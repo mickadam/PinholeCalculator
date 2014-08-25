@@ -239,41 +239,39 @@ public class DBAdapter4Stenope {
 				null, null, null, null);
 	}
 
-	// récupérer la valeur d'un champ grâce à son id
 	/**
-	 * Gets the.
+	 * Gets the value of a field thanks is id.
 	 * 
-	 * @param champ
-	 *            the champ
+	 * @param field
+	 *            the field
 	 * @param id
 	 *            the id
 	 * @return the string
 	 */
-	public String get(String champ, int id) {
+	public String get(String field, int id) {
 		if (id == 0)
 			return null;
 
-		Cursor c = recupererUnStenope(id);
-		c.moveToFirst();
+		Cursor cursor = recupererUnStenope(id);
+		cursor.moveToFirst();
 
-		String strGet = c.getString(c.getColumnIndex(champ));
-		c.close();
+		String strGet = cursor.getString(cursor.getColumnIndex(field));
+		cursor.close();
 		return strGet;
-
 	}
 
 	/**
-	 * Sets the.
+	 * Sets the value of a field thanks is id.
 	 * 
-	 * @param champ
-	 *            the champ
-	 * @param valeur
-	 *            the valeur
+	 * @param field
+	 *            the field
+	 * @param value
+	 *            the value
 	 * @param id
 	 *            the id
 	 * @return the int
 	 */
-	public int set(String champ, String valeur, int id) {
+	public int set(String field, String value, int id) {
 		if (id == 0)
 			return -1;
 
@@ -281,7 +279,7 @@ public class DBAdapter4Stenope {
 		Cursor c = recupererUnStenope(id);
 
 		c.moveToFirst();
-		values.put(champ, valeur);
+		values.put(field, value);
 
 		return SQLdataBase.update("stenopes", values, "_id= " + id, null);
 
