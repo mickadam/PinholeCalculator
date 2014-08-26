@@ -207,7 +207,7 @@ public class Exposition extends Activity implements OnClickListener,
 		if (view == btnCalcVit) {
 
 			double vitesse = CalculeVitesse();
-			showSpeed(vitesse);
+			showTimeLeft(vitesse);
 			tempsRestant = 0;
 		}
 		if (view == btnCompteur) {
@@ -242,7 +242,7 @@ public class Exposition extends Activity implements OnClickListener,
 					@Override
 					public void onTick(long millisUntilFinished) {
 						// txtVitesse.setText(""+millisUntilFinished / 100);
-						showSpeed(((double) millisUntilFinished) / 1000);
+						showTimeLeft(((double) millisUntilFinished) / 1000);
 						tempsRestant = millisUntilFinished;
 						btnCompteur.setText(R.string.btnCompteurStop);
 						bRunTimer = true;
@@ -340,34 +340,30 @@ public class Exposition extends Activity implements OnClickListener,
 	}
 
 	/**
-	 * Show the speed at the good format.
+	 * Show the time left for the exposure.
 	 *
-	 * @param speed
-	 *            the vitesse
+	 * @param TimeLeft
+	 *            the time left for the current exposure
 	 */
-	private void showSpeed(double speed) {
+	private void showTimeLeft(double TimeLeft) {
 		DecimalFormat df = new DecimalFormat("#######");
 
-		if (speed != 0) {
+		if (TimeLeft != 0) {
 
-			String strVitesse = "";
+			String strTimeLeft = "";
 
-			if (speed < 1) {
-				speed = 1 / speed;
-				strVitesse = "1/" + df.format(speed) + " s";
-			} else {
-				int heures = (int) speed / 3600;
-				if (heures >= 1)
-					strVitesse = "" + df.format(heures) + "h ";
-				int minutes = (int) ((speed - 3600 * heures) / 60);
-				if (minutes >= 1)
-					strVitesse = strVitesse + df.format(minutes) + "m ";
-				double seconde = speed - 3600 * heures - 60 * minutes;
-				df.applyPattern("#######.#");
-				if (seconde >= 1)
-					strVitesse = strVitesse + df.format(seconde) + "s";
-			}
-			txtVitesse.setText(strVitesse);
+			int hours = (int) TimeLeft / 3600;
+			if (hours >= 1)
+				strTimeLeft = "" + df.format(hours) + "h ";
+			int minutes = (int) ((TimeLeft - 3600 * hours) / 60);
+			if (minutes >= 1)
+				strTimeLeft = strTimeLeft + df.format(minutes) + "m ";
+			double seconds = TimeLeft - 3600 * hours - 60 * minutes;
+			df.applyPattern("#######");
+			if (seconds >= 0)
+				strTimeLeft = strTimeLeft + df.format(seconds) + "s";
+
+			txtVitesse.setText(strTimeLeft);
 		} else {
 			txtVitesse.setText("---");
 		}
