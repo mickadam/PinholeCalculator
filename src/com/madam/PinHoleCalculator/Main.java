@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.madam.PinHoleCalculator2.R;
+import com.madam.PinHoleCalculator.R;
 
 /**
  * The Class Main.

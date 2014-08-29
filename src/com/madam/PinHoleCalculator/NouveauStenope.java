@@ -29,7 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.madam.PinHoleCalculator2.R;
+import com.madam.PinHoleCalculator.R;
 
 /**
  * The Class NouveauStenope.

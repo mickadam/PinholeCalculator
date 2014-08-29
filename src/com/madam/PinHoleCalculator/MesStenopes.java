@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.madam.PinHoleCalculator2.R;
+import com.madam.PinHoleCalculator.R;
 
 // TODO: Auto-generated Javadoc
 /**

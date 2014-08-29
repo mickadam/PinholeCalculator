@@ -34,7 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.madam.PinHoleCalculator2.R;
+import com.madam.PinHoleCalculator.R;
 
 // TODO: Auto-generated Javadoc
 /**
