@@ -5,64 +5,62 @@
 	
     <!-- Main.xml -->   
 	<string name="diamFoc">Calcul du Diamètre &amp; de la longueur focale</string>
-	<string name="mesureDExpo">Mesure d\'exposition</string>
-	<string name="mesStenop">Mes Sténopés</string>
+	<string name="exposureMetering">Mesure d\'exposition</string>
+	<string name="myPinholeCollection">Mes Sténopés</string>
 	<string name="disclamer">PinHoleCalculator par Mickaël ADAM</string>
 
 	<!-- diamfoc.xml -->
-	<string name="diametre">Diamètre (mm):</string>
- 	<string name="focaleOptimale">->Focale optimale (mm):</string>
+	<string name="diameter">Diamètre (mm):</string>
+ 	<string name="optimalFocal">->Focale optimale (mm):</string>
 	<string name="focale">Focale (mm):</string>
-	<string name="diametreOptimal">->Diamètre optimal (mm):</string>
-	<string name="ouverture">Ouverture:</string>
+	<string name="optimalDiameter">->Diamètre optimal (mm):</string>
+	<string name="aperture">Ouverture:</string>
 	
 	<!-- exposition.xml  -->
-	<string name="vitesseMesuree">Vitesse mesurée:</string>
+	<string name="measuredSpeed">Vitesse mesurée:</string>
 	<string name="ouvertureDeMesure">Ouverture de mesure:</string>
-	<string name="IsoDeMesure">Iso de mesure:</string>
-	<string name="valeurDExposition">Valeur d\'Exposition(EV):</string>
-	<string name="ouvertureDuStenope">Ouverture du Sténopé:</string>
-	<string name="typeDePapier">Type de Papier :</string>
-	<string name="IsoDuPapier">Iso du Film:</string>
-	<string name="vitesse">Temps d\'Exposition:</string>
-	<string name="mesurer">Mesurer l\'Exposition"</string> 
-	<string name="calculer">Calculer l\'Exposition</string>  
+	<string name="measuringIso">Iso de mesure:</string>
+	<string name="exposureValue">Valeur d\'Exposition(EV):</string>
+	<string name="pinholeAperture">Ouverture du Sténopé:</string>
+	<string name="paperType">Type de Papier :</string>
+	<string name="paperIso">Iso du Film:</string>
+	<string name="calculatedSpeed">Temps d\'Exposition:</string>
+	<string name="measureEV">Mesurer l\'Exposition"</string> 
+	<string name="calculateEV">Calculer l\'Exposition</string>  
     <string name="calculerVitesse">Calculer le temps d\'Exposition</string>
 	
 	<!-- mesStenopé.xml -->
-	<string name="nouveau">Nouveau</string> 
-    <string name="mesStenopes">- Mes Stenopés -</string> 
+	<string name="newPinhole">Nouveau</string> 
+    <string name="myPinholeHeader">- Mes Stenopés -</string> 
      
     <!-- nouveaustenope.xml -->
-    <string name="nouveauStenop">Nouveau Sténopé</string> 
-    <string name="nom">Nom:</string> 
+    <string name="name">Nom:</string> 
     <string name="description">Description:</string> 
-    <string name="sauver">Sauver</string> 
+    <string name="save">Sauver</string> 
     
-    <!-- MesStenopes.java -->
-    <string name="toutEffacer">Tout supprimer</string>
+    <!-- MyPinholeCollection.java -->
+    <string name="deleteAll">Tout supprimer</string>
 	<string name="action">Action</string>
-	<string name="editer">Editer</string>
-	<string name="supprimer">Supprimer</string>
+	<string name="edit">Editer</string>
+	<string name="delete">Supprimer</string>
 	
 	<!-- Exposition.java -->
-	<string name="nonSupportee">Non supportée</string>
-	<string name="papier">Film </string>
+	<string name="notSupported">Non supportée</string>
+	<string name="paper">Film </string>
 	
-	<string name="prendrePhoto">Prendre Photo</string>  
+	<string name="takePicture">Prendre Photo</string>  
 
-    
-    <string name="dimensionPapier">Dimension du film (mm):</string> 
+    <string name="paperDimension">Dimension du film (mm):</string> 
 	<string name="angle">Angle:</string> 
 	
 	<string name="nan">---</string>
-	<string name="btnCompteurStart">Démarrer</string> 
-	<string name="btnCompteurStop">Arréter</string>
+	<string name="start">Démarrer</string> 
+	<string name="stop">Arréter</string>
 	
-	<string name="Compteur">Chronomètre:</string>
-	<string name="CompteurFini">Fini !!</string>
-	<string name="ou">ou</string>
-	<string name="imageText">Tous droits réservés. Stéphane Adam. 2012. www.stephaneadam.fr</string>
+	<string name="timer">Chronomètre:</string>
+	<string name="timerDone">Fini !!</string>
+	<string name="or">ou</string>
+	<string name="mainPictureCopyright">Tous droits réservés. Stéphane Adam. 2012. www.stephaneadam.fr</string>
 	<string name="imageContentDescription">Image Principale</string>
 	   
 	

@@ -8,8 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/mesStenopes"
-        android:textSize="@dimen/taillePolice1" />
+        android:text="@string/myPinholeHeader"
+        android:textSize="@dimen/policeSize1" />
 
     <ListView
         android:layout_height="0dip"
@@ -21,6 +21,6 @@
         android:id="@+id/buttonAdd"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nouveau" />
+        android:text="@string/newPinhole" />
 
 </LinearLayout>

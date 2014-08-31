@@ -32,18 +32,18 @@
             android:text="@string/diamFoc" />
 
         <Button
-            android:id="@+id/btnMesExp"
+            android:id="@+id/btnExposure"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:singleLine="false"
-            android:text="@string/mesureDExpo" />
+            android:text="@string/exposureMetering" />
 
         <Button
-            android:id="@+id/btnMesStenop"
+            android:id="@+id/btnMyPinholeCollection"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:singleLine="false"
-            android:text="@string/mesStenop" /> 
+            android:text="@string/myPinholeCollection" /> 
 
         <TextView
             android:id="@+id/TextView01"

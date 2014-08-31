@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="@string/vitesseMesuree"
-            android:textSize="@dimen/taillePolice1" />
+            android:text="@string/measuredSpeed"
+            android:textSize="@dimen/policeSize1" />
 
         <EditText
             android:id="@+id/exposition_EdTxtVitesseIn"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="@string/ouvertureDeMesure"
-            android:textSize="@dimen/taillePolice1" />
+            android:textSize="@dimen/policeSize1" />
 
         <EditText
             android:id="@+id/exposition_EdTxtfNIn"
@@ -50,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="@string/IsoDeMesure"
-            android:textSize="@dimen/taillePolice1" />
+            android:text="@string/measuringIso"
+            android:textSize="@dimen/policeSize1" />
 
         <EditText
             android:id="@+id/exposition_EdTxtIsoIn"
@@ -65,27 +65,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:text="@string/valeurDExposition"
-        android:textSize="@dimen/taillePolice1" />
+        android:text="@string/exposureValue"
+        android:textSize="@dimen/policeSize1" />
 
     <Button
         android:id="@+id/exposition_btnCalcEV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calculer" />
+        android:text="@string/calculateEV" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/ou"
-        android:textSize="@dimen/taillePolice1" />
+        android:text="@string/or"
+        android:textSize="@dimen/policeSize1" />
 
     <Button
         android:id="@+id/exposition_btnMesurer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mesurer" />
+        android:text="@string/measureEV" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -106,8 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:paddingLeft="10dp"
-        android:text="@string/ouvertureDuStenope"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/pinholeAperture"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <EditText
@@ -122,8 +122,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:paddingLeft="10dp"
-        android:text="@string/typeDePapier"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/paperType"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <Spinner
@@ -137,8 +137,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:paddingLeft="10dp"
-        android:text="@string/IsoDuPapier"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/paperIso"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <EditText
@@ -159,8 +159,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:text="@string/vitesse"
-        android:textSize="@dimen/taillePolice1" />
+        android:text="@string/calculatedSpeed"
+        android:textSize="@dimen/policeSize1" />
 
     <TextView
         android:id="@+id/exposition_txtVitesse"
@@ -170,28 +170,28 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:text="@string/nan"
-        android:textSize="@dimen/taillePolice2" >
+        android:textSize="@dimen/policeSize2" >
     </TextView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:text="@string/Compteur"
-        android:textSize="@dimen/taillePolice1" />
+        android:text="@string/timer"
+        android:textSize="@dimen/policeSize1" />
 
     <Button
         android:id="@+id/bntCompteur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnCompteurStart" />
+        android:text="@string/start" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:text=""
-        android:textSize="@dimen/taillePolice1" />
+        android:textSize="@dimen/policeSize1" />
 
 </LinearLayout>
 

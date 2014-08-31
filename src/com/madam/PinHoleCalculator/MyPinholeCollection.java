@@ -25,8 +25,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.madam.PinHoleCalculator.R;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class MyPinholeCollection.
@@ -74,7 +72,7 @@ public class MyPinholeCollection extends ListActivity implements OnClickListener
 	@Override
 	// Création du menu principal
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 200, 0, R.string.toutEffacer);
+		menu.add(0, 200, 0, R.string.deleteAll);
 		return true;
 	}
 
@@ -98,8 +96,7 @@ public class MyPinholeCollection extends ListActivity implements OnClickListener
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see android.app.ListActivity#onListItemClick(android.widget.ListView,
-	 * android.view.View, int, long)
+	 * @see android.app.ListActivity#onListItemClick(android.widget.ListView, android.view.View, int, long)
 	 */
 	@Override
 	// Selection d'un item de la liste
@@ -119,17 +116,15 @@ public class MyPinholeCollection extends ListActivity implements OnClickListener
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see android.app.Activity#onCreateContextMenu(android.view.ContextMenu,
-	 * android.view.View, android.view.ContextMenu.ContextMenuInfo)
+	 * @see android.app.Activity#onCreateContextMenu(android.view.ContextMenu, android.view.View, android.view.ContextMenu.ContextMenuInfo)
 	 */
 	@Override
 	// Creation du menu contextuel
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		menu.setHeaderTitle(R.string.action);
-		menu.add(0, 200, 0, R.string.editer);
-		menu.add(0, 100, 1, R.string.supprimer);
+		menu.add(0, 200, 0, R.string.edit);
+		menu.add(0, 100, 1, R.string.delete);
 
 	}
 
@@ -141,8 +136,7 @@ public class MyPinholeCollection extends ListActivity implements OnClickListener
 	@Override
 	// Selection d'un item du menu contextuel
 	public boolean onContextItemSelected(MenuItem item) {
-		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
-				.getMenuInfo();
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		switch (item.getItemId()) {
 		case 100:
 			db.supprimerStenope(info.id);
@@ -178,15 +172,10 @@ public class MyPinholeCollection extends ListActivity implements OnClickListener
 		Cursor cursor = db.recupererLaListeDesStenopes();
 		startManagingCursor(cursor);
 
-		String[] columns = new String[] { "nom", "description", "focale",
-				"diaphragme", "URLimg" };
-		int[] to = new int[] { R.id.stenope_Item_textNom,
-				R.id.stenope_Item_TextDescription,
-				R.id.stenope_Item_TextFocale, R.id.stenope_Item_TextDiaphragme,
-				R.id.stenope_Item_ImageView };
+		String[] columns = new String[] { "nom", "description", "focale", "diaphragme", "URLimg" };
+		int[] to = new int[] { R.id.stenope_Item_textNom, R.id.stenope_Item_TextDescription, R.id.stenope_Item_TextFocale, R.id.stenope_Item_TextDiaphragme, R.id.stenope_Item_ImageView };
 
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-				R.layout.stenope_item, cursor, columns, to);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.stenope_item, cursor, columns, to);
 		// SimpleCursorAdapter adapter = new
 		// CursorAdapter(this,R.layout.stenope_item,cursor,columns,to);
 

@@ -41,7 +41,7 @@ import android.widget.Toast;
 public class Exposition extends Activity implements OnClickListener, OnItemSelectedListener, SensorEventListener {
 
 	/** The btn mesur. */
-	private Button btnMesur;
+	private Button mesurButton;
 
 	/** The Ed txt ev. */
 	private EditText EdTxtEV;
@@ -62,7 +62,7 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	private EditText EdTxtIsoSteno;
 
 	/** The txt vitesse. */
-	private TextView txtVitesse;
+	private TextView txtSpeed;
 
 	/** The Types papier array. */
 	private String[] TypesPapierArray;
@@ -74,7 +74,7 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	private Integer IdPapier = 0;
 
 	/** The my sensor manager. */
-	private SensorManager mySensorManager;
+	private SensorManager sensorManager;
 
 	/** The light sensor. */
 	private Sensor lightSensor;
@@ -92,13 +92,13 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	private Button btnCalcVit;
 
 	/** The btn compteur. */
-	private Button btnCompteur;
+	private Button timerButton;
 
 	/** The b run timer. */
 	private boolean bRunTimer = false;
 
 	/** The t timer. */
-	private CountDownTimer tTimer;
+	private CountDownTimer timer;
 
 	/** The temps restant. */
 	protected long tempsRestant = 0;
@@ -122,16 +122,16 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 		setContentView(R.layout.exposition);
 
 		// --gestion du capteur de luminausité--//
-		mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-		lightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+		lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 		// -------------------------------------//
 
 		// en entrée
-		btnMesur = (Button) this.findViewById(R.id.exposition_btnMesurer);
+		mesurButton = (Button) this.findViewById(R.id.exposition_btnMesurer);
 		btnCalcEV = (Button) this.findViewById(R.id.exposition_btnCalcEV);
 		btnCalcVit = (Button) this.findViewById(R.id.bntCalcVit);
-		btnCompteur = (Button) this.findViewById(R.id.bntCompteur);
+		timerButton = (Button) this.findViewById(R.id.bntCompteur);
 
 		EdTxtEV = (EditText) this.findViewById(R.id.exposition_EdTxtEV);
 		EdTxtDiaphIn = (EditText) this.findViewById(R.id.exposition_EdTxtfNIn);
@@ -141,7 +141,7 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 		// valeurs du stenopé
 		EdTxtDiaphSteno = (EditText) this.findViewById(R.id.exposition_EdTxtfN);
 		EdTxtIsoSteno = (EditText) this.findViewById(R.id.exposition_EdTxtIso);
-		txtVitesse = (TextView) this.findViewById(R.id.exposition_txtVitesse);
+		txtSpeed = (TextView) this.findViewById(R.id.exposition_txtVitesse);
 
 		// Le Spinner du papier
 		TypesPapierArray = new String[11];
@@ -165,8 +165,8 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 		spinTypesPapier.setAdapter(adapter);
 		spinTypesPapier.setOnItemSelectedListener(this);
 		// fin spinner
-		btnCompteur.setOnClickListener(this);
-		btnMesur.setOnClickListener(this);
+		timerButton.setOnClickListener(this);
+		mesurButton.setOnClickListener(this);
 		btnCalcEV.setOnClickListener(this);
 		btnCalcVit.setOnClickListener(this);
 
@@ -185,12 +185,12 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	public void onClick(View view) {
 		DecimalFormat df2 = new DecimalFormat("@@@@");
 
-		if (view == btnMesur) {
+		if (view == mesurButton) {
 			if (currentLight != 0) {
 				EV = (float) (Math.log(currentLight / 2.5) / Math.log(2));
 				EdTxtEV.setText("" + EV);
 			} else {
-				Toast.makeText(this, R.string.nonSupportee, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.notSupported, Toast.LENGTH_SHORT).show();
 			}
 
 		}
@@ -199,11 +199,11 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 		}
 		if (view == btnCalcVit) {
 
-			double vitesse = CalculeVitesse();
+			double vitesse = getSpeedWithReceprocity();
 			showTimeLeft(vitesse);
 			tempsRestant = 0;
 		}
-		if (view == btnCompteur) {
+		if (view == timerButton) {
 			GestionCompteur();
 		}
 		if (view == btnTest) {
@@ -223,27 +223,27 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 
 		if (!bRunTimer) {
 			if (tempsRestant == 0) {
-				float fVitesse = new Float(CalculeVitesse());
+				float fVitesse = new Float(getSpeedWithReceprocity());
 				lVitesse = new Long((long) (fVitesse * 1000));
 			} else {
 				lVitesse = tempsRestant;
 			}
-			if (CalculeVitesse() != 0) {
-				tTimer = new CountDownTimer(lVitesse, 100) {
+			if (getSpeedWithReceprocity() != 0) {
+				timer = new CountDownTimer(lVitesse, 100) {
 
 					@Override
 					public void onTick(long millisUntilFinished) {
-						// txtVitesse.setText(""+millisUntilFinished / 100);
+						// txtSpeed.setText(""+millisUntilFinished / 100);
 						showTimeLeft(((double) millisUntilFinished) / 1000);
 						tempsRestant = millisUntilFinished;
-						btnCompteur.setText(R.string.btnCompteurStop);
+						timerButton.setText(R.string.stop);
 						bRunTimer = true;
 					}
 
 					@Override
 					public void onFinish() {
-						txtVitesse.setText(R.string.CompteurFini);
-						btnCompteur.setText(R.string.btnCompteurStart);
+						txtSpeed.setText(R.string.timerDone);
+						timerButton.setText(R.string.start);
 						tempsRestant = 0;
 						bRunTimer = false;
 						joueSon(true);
@@ -252,8 +252,8 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 			}
 
 		} else {
-			tTimer.cancel();
-			btnCompteur.setText(R.string.btnCompteurStart);
+			timer.cancel();
+			timerButton.setText(R.string.start);
 			bRunTimer = false;
 		}
 
@@ -280,7 +280,7 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	@Override
 	protected void onPause() {
 		// Unregister the sensor listener
-		mySensorManager.unregisterListener(this, lightSensor);
+		sensorManager.unregisterListener(this, lightSensor);
 		super.onPause();
 	}
 
@@ -292,21 +292,19 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	@Override
 	protected void onResume() {
 		// Register the sensor listener
-		mySensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_GAME);
+		sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_GAME);
 		super.onResume();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android
-	 * .widget.AdapterView, android.view.View, int, long)
+	 * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android .widget.AdapterView, android.view.View, int, long)
 	 */
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
 		// Selection of the paper type
-		Toast.makeText(parent.getContext(), this.getString(R.string.papier) + ": " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
+		Toast.makeText(parent.getContext(), this.getString(R.string.paper) + ": " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
 
 		IdPapier = pos;
 
@@ -349,18 +347,16 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 			if (seconds >= 0)
 				strTimeLeft = strTimeLeft + df.format(seconds) + "s";
 
-			txtVitesse.setText(strTimeLeft);
+			txtSpeed.setText(strTimeLeft);
 		} else {
-			txtVitesse.setText("---");
+			txtSpeed.setText("---");
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.widget.AdapterView.OnItemSelectedListener#onNothingSelected(android
-	 * .widget.AdapterView)
+	 * @see android.widget.AdapterView.OnItemSelectedListener#onNothingSelected(android .widget.AdapterView)
 	 */
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// Do nothing
@@ -420,36 +416,21 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	}
 
 	/**
-	 * Calcule vitesse.
+	 * Calculate speed with paper eecrpocity.
 	 *
 	 * @return the double
 	 */
-	private double CalculeVitesse() {
-		double calc = 0;
+	private double getSpeedWithReceprocity() {
 
-		String str2Comp = new String();
-		str2Comp = "";
-		double Vitesse = 0;
+		String str2Comp = "";
+		double speed = 0;
 
 		if (!str2Comp.equals(EdTxtDiaphSteno.getText().toString()) && !str2Comp.equals(EdTxtIsoSteno.getText().toString()) && !str2Comp.equals(EdTxtEV.getText().toString())) {
 
-			try {
-				float N = Float.valueOf(EdTxtDiaphSteno.getText().toString());
-				float Iso = Float.valueOf(EdTxtIsoSteno.getText().toString());
+			speed = getSpeed();
 
-				float Ev = Float.valueOf(new String(EdTxtEV.getText().toString().replace(",", ".")));
-
-				calc = -(Ev + log2(Iso / 100) - log2(N * N));
-
-				Vitesse = (float) Math.pow(2, calc);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				return -1;
-			}
-
-			// Prise en compte de la réciprocité
-			if (Vitesse > 1) {
+			// Calcul of the reciprocity
+			if (speed > 1) {
 				double a;
 				double b;
 				// TypesPapierArray[0]="Aucun";
@@ -470,58 +451,50 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 				case 1:// Ilford Delta Pro
 					a = 0.046; // 100Dela
 					b = 1.62;
-					Vitesse = (float) (a * Math.pow(Vitesse, b) + Vitesse); // (tadj
-																			// -
-																			// tmeas)
-																			// =
-																			// a
-																			// *
-																			// (tmeas
-																			// ^
-																			// b)
+					speed = (float) (a * Math.pow(speed, b) + speed); // (tadj -
+																		// tmeas)
+																		// = a *
+																		// (tmeas
+																		// ^ b)
 					break;
 				case 2:// Ilford FP4 Plus
 					b = 1.48;
-					Vitesse = (float) (Math.pow(Vitesse, b)); // tcorrigé = t
-																// ^1.48
+					speed = (float) (Math.pow(speed, b)); // tcorrigé = t ^1.48
 					break;
 				case 3:// Ilford HP5 Plus
 					b = 1.48;
-					Vitesse = (float) (Math.pow(Vitesse, b)); // tcorrigé = t
-																// ^1.48
+					speed = (float) (Math.pow(speed, b)); // tcorrigé = t ^1.48
 					break;
 				case 4:// Ilford Pan F Plus
 					b = 1.48;
-					Vitesse = (float) (Math.pow(Vitesse, b)); // tcorrigé = t
-																// ^1.48
+					speed = (float) (Math.pow(speed, b)); // tcorrigé = t ^1.48
 					break;
 				case 5:// Ilford XP2 Super
 					b = 1.48;
-					Vitesse = (float) (Math.pow(Vitesse, b)); // tcorrigé = t
-																// ^1.48
+					speed = (float) (Math.pow(speed, b)); // tcorrigé = t ^1.48
 					break;
 				case 6:// "Adox CHS Art 25
-					Vitesse = (float) (0.134353883987194 * Math.pow(Vitesse, 1.34968890243641) + Vitesse);
+					speed = (float) (0.134353883987194 * Math.pow(speed, 1.34968890243641) + speed);
 					break;
 				case 7:// Kodak 400TX
 					a = 0.169;
 					b = 1.62;
-					Vitesse = (float) (a * Math.pow(Vitesse, b) + Vitesse);
+					speed = (float) (a * Math.pow(speed, b) + speed);
 					break;
 				case 8:// "Kodak TMY
 					a = 0.061;
 					b = 1.62;
-					Vitesse = (float) (a * Math.pow(Vitesse, b) + Vitesse);
+					speed = (float) (a * Math.pow(speed, b) + speed);
 					break;
 				case 9:// Kodak TMX
 					a = 0.069;
 					b = 1.62;
-					Vitesse = (float) (a * Math.pow(Vitesse, b) + Vitesse);
+					speed = (float) (a * Math.pow(speed, b) + speed);
 					break;
 				case 10:// Kodak E100S
 					a = 0.046;
 					b = 1.62;
-					Vitesse = (float) (Math.pow(Vitesse + 1.0, 1.0 / 0.96) - 1.0);
+					speed = (float) (Math.pow(speed + 1.0, 1.0 / 0.96) - 1.0);
 					break;
 
 				default:
@@ -529,7 +502,30 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 				}
 			}
 		}
-		return Vitesse;
+		return speed;
+	}
+
+	/**
+	 * @return
+	 */
+	private double getSpeed() {
+		try {
+
+			// get the aperture value of the pinhole
+			float N = Float.valueOf(EdTxtDiaphSteno.getText().toString());
+			// get the ISO value of the paper
+			float Iso = Float.valueOf(EdTxtIsoSteno.getText().toString());
+			// get the exposition value of the pinhole
+			float Ev = Float.valueOf(new String(EdTxtEV.getText().toString().replace(",", ".")));
+			// calculation of the speed
+			double speed = (float) Math.pow(2, -(Ev + log2(Iso / 100) - log2(N * N)));
+
+			return speed;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	// ==Source==//
@@ -585,17 +581,14 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 		double a8 = 0.00000000000688970964188516;// e-12;
 		double a9 = -0.0000000000000141355556089969;// e-14;
 
-		float Vitesse = (float) (a0 + a1 * vit + a2 * vit * vit + a3 * vit * vit * vit + a4 * vit * vit * vit * vit + a5 * vit * vit * vit * vit * vit + a6 * vit * vit * vit * vit * vit * vit + a7
-				* vit * vit * vit * vit * vit * vit * vit + a8 * vit * vit * vit * vit * vit * vit * vit * vit + a9 * vit * vit * vit * vit * vit * vit * vit * vit * vit);
+		float Vitesse = (float) (a0 + a1 * vit + a2 * vit * vit + a3 * vit * vit * vit + a4 * vit * vit * vit * vit + a5 * vit * vit * vit * vit * vit + a6 * vit * vit * vit * vit * vit * vit + a7 * vit * vit * vit * vit * vit * vit * vit + a8 * vit * vit * vit * vit * vit * vit * vit * vit + a9 * vit * vit * vit * vit * vit * vit * vit * vit * vit);
 		return Vitesse;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.hardware.SensorEventListener#onAccuracyChanged(android.hardware
-	 * .Sensor, int)
+	 * @see android.hardware.SensorEventListener#onAccuracyChanged(android.hardware .Sensor, int)
 	 */
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
@@ -604,9 +597,7 @@ public class Exposition extends Activity implements OnClickListener, OnItemSelec
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.hardware.SensorEventListener#onSensorChanged(android.hardware
-	 * .SensorEvent)
+	 * @see android.hardware.SensorEventListener#onSensorChanged(android.hardware .SensorEvent)
 	 */
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_LIGHT)

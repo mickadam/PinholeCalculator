@@ -23,7 +23,7 @@
 		    <!-- 		    android:onClick="PrendPhoto" : A mettre audessus pour activé la prise de photo(alfa)-->
 		    
 	</ImageView>
-		<TextView android:text="@string/nom" 
+		<TextView android:text="@string/name" 
 			android:layout_height="wrap_content" 
 			android:layout_width="wrap_content" 
 			android:id="@+id/nvxStenope_txtNom" 
@@ -37,7 +37,7 @@
 			android:layout_height="wrap_content" 
 			android:layout_width="wrap_content" 
 			android:id="@+id/nvxStenope_txtFocale" 
-			android:textSize="@dimen/taillePolice1" 
+			android:textSize="@dimen/policeSize1" 
 			android:layout_gravity="center" android:paddingTop="10dp"/>
 		
 		<EditText android:id="@+id/nvxStenope_EdTxtFocale" 
@@ -45,11 +45,11 @@
 			android:inputType="numberDecimal"
 			android:layout_width="match_parent"	/>
 	
-		<TextView android:text="@string/ouverture" 
+		<TextView android:text="@string/aperture" 
 			android:layout_height="wrap_content" 
 			android:layout_width="wrap_content" 
 			android:id="@+id/nvxStenope_txtOuverture"
-			android:textSize="@dimen/taillePolice1" 
+			android:textSize="@dimen/policeSize2" 
 			android:layout_gravity="center" 
 			android:paddingTop="10dp"></TextView>
 		
@@ -62,7 +62,7 @@
 			android:layout_height="wrap_content" 
 			android:layout_width="wrap_content" 
 			android:id="@+id/nvxStenope_txtDesc" 
-			android:textSize="@dimen/taillePolice1" 
+			android:textSize="@dimen/policeSize1" 
 			android:layout_gravity="center" android:paddingTop="10dp"/>
 		
 		<EditText android:id="@+id/nvxStenope_EdTxtDesc" 
@@ -73,7 +73,7 @@
 			<Button android:id="@+id/nvxStenope_btnSave" 
 			android:layout_width="fill_parent" 
 			android:layout_gravity="center_horizontal" 
-			android:text="@string/sauver" 
+			android:text="@string/save" 
 			android:layout_height="wrap_content"/>
 	
 </LinearLayout>

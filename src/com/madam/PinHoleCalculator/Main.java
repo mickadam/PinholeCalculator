@@ -21,8 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.madam.PinHoleCalculator.R;
-
 /**
  * The Class Main.
  */
@@ -47,11 +45,9 @@ public class Main extends Activity implements OnClickListener {
 		this.setVolumeControlStream(AudioManager.STREAM_SYSTEM);
 		setContentView(R.layout.main);
 
-		calculateDiameterFocalButton = (Button) this
-				.findViewById(R.id.btnDiamFoc);
-		expositionButton = (Button) this.findViewById(R.id.btnMesExp);
-		myPinholeCollectionButton = (Button) this
-				.findViewById(R.id.btnMesStenop);
+		calculateDiameterFocalButton = (Button) findViewById(R.id.btnDiamFoc);
+		expositionButton = (Button) findViewById(R.id.btnExposure);
+		myPinholeCollectionButton = (Button) findViewById(R.id.btnMyPinholeCollection);
 
 		calculateDiameterFocalButton.setOnClickListener(this);
 		expositionButton.setOnClickListener(this);
@@ -86,7 +82,7 @@ public class Main extends Activity implements OnClickListener {
 	 *            the view
 	 */
 	public void imageToast(View view) {
-		Toast.makeText(this, R.string.imageText, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, R.string.mainPictureCopyright, Toast.LENGTH_LONG).show();
 	}
 
 }

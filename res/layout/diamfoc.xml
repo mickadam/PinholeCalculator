@@ -18,8 +18,8 @@
         android:id="@+id/TextViewDiam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/diametre"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/diameter"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <LinearLayout
@@ -40,8 +40,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/focaleOptimale"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/optimalFocal"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
@@ -50,14 +50,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/nan"
-        android:textSize="@dimen/taillePolice1" >
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
         android:id="@+id/TextViewFocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/taillePolice1"
+        android:paddingTop="@dimen/policeSize1"
         android:text="@string/focale" >
     </TextView>
 
@@ -80,8 +80,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/diametreOptimal"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/optimalDiameter"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
@@ -90,15 +90,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/nan"
-        android:textSize="@dimen/taillePolice1" >
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
-        android:text="@string/ouverture"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/aperture"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
@@ -110,7 +110,7 @@
         android:background="@color/color01"
         android:gravity="center"
         android:text="@string/nan"
-        android:textSize="@dimen/taillePolice2" >
+        android:textSize="@dimen/policeSize2" >
     </TextView>
 
     <TextView
@@ -118,8 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/dimensionPapier"
-        android:textSize="@dimen/taillePolice1" >
+        android:text="@string/paperDimension"
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <LinearLayout
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:text="X"
-            android:textSize="@dimen/taillePolice1"
+            android:textSize="@dimen/policeSize1"
             tools:ignore="HardcodedText" >
 
         </TextView>
@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:text="@string/angle"
-        android:textSize="@dimen/taillePolice1" >
+        android:textSize="@dimen/policeSize1" >
     </TextView>
 
     <TextView
@@ -173,7 +173,7 @@
         android:background="@color/color01"
         android:gravity="center"
         android:text="@string/nan"
-        android:textSize="@dimen/taillePolice2" >
+        android:textSize="@dimen/policeSize2" >
     </TextView>
 </LinearLayout>
 

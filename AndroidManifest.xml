@@ -27,15 +27,15 @@
         </activity>
     	<activity android:name="com.madam.PinHoleCalculator.Exposition" 
 		    	android:screenOrientation="portrait" 
-		    	android:label="@string/mesureDExpo">
+		    	android:label="@string/exposureMetering">
 		</activity>
 		<activity android:name="com.madam.PinHoleCalculator.MyPinholeCollection" 
 		    	android:screenOrientation="portrait" 
-		    	android:label="@string/mesStenop">
+		    	android:label="@string/myPinholeCollection">
 		</activity>    	
 		<activity android:name="com.madam.PinHoleCalculator.NewPinhole" 
 		    	android:screenOrientation="portrait" 
-		    	android:label="@string/nouveauStenop">
+		    	android:label="@string/newPinhole">
 		</activity>  	
 		
 	</application>
