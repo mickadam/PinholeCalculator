@@ -20,9 +20,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 /**
- * The Class DBAdapter4Stenope.
+ * The Class DBAdapter4Pinhole.
  */
-public class DBAdapter4Stenope {
+public class DBAdapter4Pinhole {
 
 	/** The DB helper. */
 	DatabaseHelper DBHelper;
@@ -39,7 +39,7 @@ public class DBAdapter4Stenope {
 	 * @param context
 	 *            the context
 	 */
-	public DBAdapter4Stenope(Context context) {
+	public DBAdapter4Pinhole(Context context) {
 		this.context = context;
 		DBHelper = new DatabaseHelper(context);
 	}
@@ -107,7 +107,7 @@ public class DBAdapter4Stenope {
 	 * 
 	 * @return the DB adapter4 stenope
 	 */
-	public DBAdapter4Stenope open() {
+	public DBAdapter4Pinhole open() {
 		SQLdataBase = DBHelper.getWritableDatabase();
 		return this;
 	}

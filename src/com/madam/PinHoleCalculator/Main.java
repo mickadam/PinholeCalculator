@@ -73,7 +73,7 @@ public class Main extends Activity implements OnClickListener {
 				startActivity(intent);
 			}
 			if (v == myPinholeCollectionButton) {
-				Intent intent = new Intent(Main.this, MesStenopes.class);
+				Intent intent = new Intent(Main.this, MyPinholeCollection.class);
 				startActivity(intent);
 			}
 		}

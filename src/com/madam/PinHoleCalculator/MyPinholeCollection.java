@@ -29,12 +29,12 @@ import com.madam.PinHoleCalculator.R;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MesStenopes.
+ * The Class MyPinholeCollection.
  */
-public class MesStenopes extends ListActivity implements OnClickListener {
+public class MyPinholeCollection extends ListActivity implements OnClickListener {
 	/** Called when the activity is first created. */
 
-	DBAdapter4Stenope db;
+	DBAdapter4Pinhole db;
 
 	/*
 	 * (non-Javadoc)
@@ -49,7 +49,7 @@ public class MesStenopes extends ListActivity implements OnClickListener {
 		getListView().setOnCreateContextMenuListener(this);
 		((Button) findViewById(R.id.buttonAdd)).setOnClickListener(this);
 
-		db = new DBAdapter4Stenope(this);
+		db = new DBAdapter4Pinhole(this);
 		db.open();
 		DataBind();
 	}
@@ -150,7 +150,7 @@ public class MesStenopes extends ListActivity implements OnClickListener {
 			break;
 		case 200:
 			// Edit
-			Intent intent = new Intent(this, NouveauStenope.class);
+			Intent intent = new Intent(this, NewPinhole.class);
 			int id = (int) info.id;
 			intent.putExtra("dbItemId", id);
 			this.startActivity(intent);
@@ -199,7 +199,7 @@ public class MesStenopes extends ListActivity implements OnClickListener {
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View v) {
-		Intent intent = new Intent(MesStenopes.this, NouveauStenope.class);
+		Intent intent = new Intent(MyPinholeCollection.this, NewPinhole.class);
 		startActivity(intent);
 	}
 

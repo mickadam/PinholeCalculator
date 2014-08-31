@@ -122,7 +122,7 @@ public class DiamFoc extends Activity implements OnKeyListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case 100:
-			Intent intent = new Intent(this, NouveauStenope.class);
+			Intent intent = new Intent(this, NewPinhole.class);
 			intent.putExtra("Focale", edTxtFocal.getText().toString());
 			intent.putExtra("Diaphragme", txtDiaph.getText().toString());
 			intent.putExtra("Angle", txtAngle.getText().toString());

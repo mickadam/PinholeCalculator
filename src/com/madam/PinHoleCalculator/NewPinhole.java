@@ -32,12 +32,12 @@ import android.widget.Toast;
 import com.madam.PinHoleCalculator.R;
 
 /**
- * The Class NouveauStenope.
+ * The Class NewPinhole.
  */
-public class NouveauStenope extends Activity implements OnClickListener {
+public class NewPinhole extends Activity implements OnClickListener {
 
 	/** The db. */
-	private DBAdapter4Stenope db;
+	private DBAdapter4Pinhole db;
 
 	/** The Ed txt nom. */
 	EditText EdTxtNom;
@@ -96,7 +96,7 @@ public class NouveauStenope extends Activity implements OnClickListener {
 		btnSave.setOnClickListener(this);
 		photoSteno.setOnClickListener(this);
 
-		db = new DBAdapter4Stenope(this);
+		db = new DBAdapter4Pinhole(this);
 		db.open();
 
 		if (this.getIntent().getExtras() != null) {
@@ -121,7 +121,7 @@ public class NouveauStenope extends Activity implements OnClickListener {
 				EdTxtDesc.setText("" + db.get("description", dbItemId));
 				EdTxtOuverture.setText("" + db.get("diaphragme", dbItemId));
 				EdTxtFocale.setText("" + db.get("focale", dbItemId));
-				chemin = "" + NouveauStenope.this.getFilesDir() + "/"
+				chemin = "" + NewPinhole.this.getFilesDir() + "/"
 						+ dbItemId + ".png";
 				afficherPhoto(chemin);
 			}
@@ -143,7 +143,7 @@ public class NouveauStenope extends Activity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		// Supression de l'ancien fichier /image.jpg
-		chemin = NouveauStenope.this.getFilesDir() + "/0.png";
+		chemin = NewPinhole.this.getFilesDir() + "/0.png";
 		imageFile = new File(chemin);
 		imageFile.delete();
 		db.close();
@@ -165,24 +165,24 @@ public class NouveauStenope extends Activity implements OnClickListener {
 						"" + EdTxtOuverture.getText(),
 						"" + EdTxtFocale.getText(), "");
 				// Sauver l'URL en ID.png
-				db.set("URLimg", "" + NouveauStenope.this.getFilesDir() + "/"
+				db.set("URLimg", "" + NewPinhole.this.getFilesDir() + "/"
 						+ dbItemId + ".png", dbItemId);
 
 				// Modifier le nom du fichier
 				if (chemin != null) {
 					imageFile = new File(chemin);
 					File newPath = new File(""
-							+ NouveauStenope.this.getFilesDir() + "/"
+							+ NewPinhole.this.getFilesDir() + "/"
 							+ dbItemId + ".png");
 					imageFile.renameTo(newPath);
-					chemin = "" + NouveauStenope.this.getFilesDir() + "/"
+					chemin = "" + NewPinhole.this.getFilesDir() + "/"
 							+ dbItemId + ".png";
 					// chemin = ""+dbItemId+".png";
 					// afficherPhoto(chemin);
 				}
 
 			} else {
-				chemin = "" + NouveauStenope.this.getFilesDir() + "/"
+				chemin = "" + NewPinhole.this.getFilesDir() + "/"
 						+ dbItemId + ".png";
 				db.modifierUnStenope(dbItemId, "" + EdTxtNom.getText(), ""
 						+ EdTxtDesc.getText(), "" + EdTxtOuverture.getText(),
@@ -247,7 +247,7 @@ public class NouveauStenope extends Activity implements OnClickListener {
 					try {
 						fos = openFileOutput("" + dbItemId + ".png",
 								Context.MODE_PRIVATE); // this.MODE_PRIVATE
-						chemin = "" + NouveauStenope.this.getFilesDir() + "/"
+						chemin = "" + NewPinhole.this.getFilesDir() + "/"
 								+ dbItemId + ".png";
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();

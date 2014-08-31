@@ -29,11 +29,11 @@
 		    	android:screenOrientation="portrait" 
 		    	android:label="@string/mesureDExpo">
 		</activity>
-		<activity android:name="com.madam.PinHoleCalculator.MesStenopes" 
+		<activity android:name="com.madam.PinHoleCalculator.MyPinholeCollection" 
 		    	android:screenOrientation="portrait" 
 		    	android:label="@string/mesStenop">
 		</activity>    	
-		<activity android:name="com.madam.PinHoleCalculator.NouveauStenope" 
+		<activity android:name="com.madam.PinHoleCalculator.NewPinhole" 
 		    	android:screenOrientation="portrait" 
 		    	android:label="@string/nouveauStenop">
 		</activity>  	
