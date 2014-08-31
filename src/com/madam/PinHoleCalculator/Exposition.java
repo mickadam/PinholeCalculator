@@ -34,14 +34,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.madam.PinHoleCalculator.R;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class Exposition.
  */
-public class Exposition extends Activity implements OnClickListener,
-		OnItemSelectedListener, SensorEventListener {
+public class Exposition extends Activity implements OnClickListener, OnItemSelectedListener, SensorEventListener {
 
 	/** The btn mesur. */
 	private Button btnMesur;
@@ -138,8 +135,7 @@ public class Exposition extends Activity implements OnClickListener,
 
 		EdTxtEV = (EditText) this.findViewById(R.id.exposition_EdTxtEV);
 		EdTxtDiaphIn = (EditText) this.findViewById(R.id.exposition_EdTxtfNIn);
-		EdTxtVitesseIn = (EditText) this
-				.findViewById(R.id.exposition_EdTxtVitesseIn);
+		EdTxtVitesseIn = (EditText) this.findViewById(R.id.exposition_EdTxtVitesseIn);
 		EdTxtIsoIn = (EditText) this.findViewById(R.id.exposition_EdTxtIsoIn);
 
 		// valeurs du stenopé
@@ -163,8 +159,7 @@ public class Exposition extends Activity implements OnClickListener,
 
 		spinTypesPapier = (Spinner) findViewById(R.id.exposition_TypePapier);
 		// Pour les petit doitg :)
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, TypesPapierArray);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypesPapierArray);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		spinTypesPapier.setAdapter(adapter);
@@ -177,8 +172,7 @@ public class Exposition extends Activity implements OnClickListener,
 
 		if (this.getIntent().getExtras() != null) {
 			// if (this.getIntent().getExtras().get("Diaphragme")!=null) {
-			EdTxtDiaphSteno.setText(""
-					+ this.getIntent().getExtras().get("Diaphragme"));
+			EdTxtDiaphSteno.setText("" + this.getIntent().getExtras().get("Diaphragme"));
 			// }
 		}
 	}
@@ -196,8 +190,7 @@ public class Exposition extends Activity implements OnClickListener,
 				EV = (float) (Math.log(currentLight / 2.5) / Math.log(2));
 				EdTxtEV.setText("" + EV);
 			} else {
-				Toast.makeText(this, R.string.nonSupportee, Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(this, R.string.nonSupportee, Toast.LENGTH_SHORT).show();
 			}
 
 		}
@@ -207,7 +200,7 @@ public class Exposition extends Activity implements OnClickListener,
 		if (view == btnCalcVit) {
 
 			double vitesse = CalculeVitesse();
-			showSpeed(vitesse);
+			showTimeLeft(vitesse);
 			tempsRestant = 0;
 		}
 		if (view == btnCompteur) {
@@ -215,8 +208,7 @@ public class Exposition extends Activity implements OnClickListener,
 		}
 		if (view == btnTest) {
 
-			layoutTest.setVisibility(Math.abs(layoutTest.getVisibility()
-					- View.GONE));
+			layoutTest.setVisibility(Math.abs(layoutTest.getVisibility() - View.GONE));
 
 		}
 	}
@@ -242,7 +234,7 @@ public class Exposition extends Activity implements OnClickListener,
 					@Override
 					public void onTick(long millisUntilFinished) {
 						// txtVitesse.setText(""+millisUntilFinished / 100);
-						showSpeed(((double) millisUntilFinished) / 1000);
+						showTimeLeft(((double) millisUntilFinished) / 1000);
 						tempsRestant = millisUntilFinished;
 						btnCompteur.setText(R.string.btnCompteurStop);
 						bRunTimer = true;
@@ -300,8 +292,7 @@ public class Exposition extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 		// Register the sensor listener
-		mySensorManager.registerListener(this, lightSensor,
-				SensorManager.SENSOR_DELAY_GAME);
+		mySensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_GAME);
 		super.onResume();
 	}
 
@@ -312,15 +303,10 @@ public class Exposition extends Activity implements OnClickListener,
 	 * android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android
 	 * .widget.AdapterView, android.view.View, int, long)
 	 */
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,
-			long id) {
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
 		// Selection of the paper type
-		Toast.makeText(
-				parent.getContext(),
-				this.getString(R.string.papier) + ": "
-						+ parent.getItemAtPosition(pos).toString(),
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(parent.getContext(), this.getString(R.string.papier) + ": " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
 
 		IdPapier = pos;
 
@@ -340,34 +326,30 @@ public class Exposition extends Activity implements OnClickListener,
 	}
 
 	/**
-	 * Show the speed at the good format.
+	 * Show the time left for the exposure.
 	 *
-	 * @param speed
-	 *            the vitesse
+	 * @param TimeLeft
+	 *            the time left for the current exposure
 	 */
-	private void showSpeed(double speed) {
+	private void showTimeLeft(double TimeLeft) {
 		DecimalFormat df = new DecimalFormat("#######");
 
-		if (speed != 0) {
+		if (TimeLeft != 0) {
 
-			String strVitesse = "";
+			String strTimeLeft = "";
 
-			if (speed < 1) {
-				speed = 1 / speed;
-				strVitesse = "1/" + df.format(speed) + " s";
-			} else {
-				int heures = (int) speed / 3600;
-				if (heures >= 1)
-					strVitesse = "" + df.format(heures) + "h ";
-				int minutes = (int) ((speed - 3600 * heures) / 60);
-				if (minutes >= 1)
-					strVitesse = strVitesse + df.format(minutes) + "m ";
-				double seconde = speed - 3600 * heures - 60 * minutes;
-				df.applyPattern("#######.#");
-				if (seconde >= 1)
-					strVitesse = strVitesse + df.format(seconde) + "s";
-			}
-			txtVitesse.setText(strVitesse);
+			int hours = (int) TimeLeft / 3600;
+			if (hours >= 1)
+				strTimeLeft = "" + df.format(hours) + "h ";
+			int minutes = (int) ((TimeLeft - 3600 * hours) / 60);
+			if (minutes >= 1)
+				strTimeLeft = strTimeLeft + df.format(minutes) + "m ";
+			double seconds = TimeLeft - 3600 * hours - 60 * minutes;
+			df.applyPattern("#######");
+			if (seconds >= 0)
+				strTimeLeft = strTimeLeft + df.format(seconds) + "s";
+
+			txtVitesse.setText(strTimeLeft);
 		} else {
 			txtVitesse.setText("---");
 		}
@@ -449,16 +431,13 @@ public class Exposition extends Activity implements OnClickListener,
 		str2Comp = "";
 		double Vitesse = 0;
 
-		if (!str2Comp.equals(EdTxtDiaphSteno.getText().toString())
-				&& !str2Comp.equals(EdTxtIsoSteno.getText().toString())
-				&& !str2Comp.equals(EdTxtEV.getText().toString())) {
+		if (!str2Comp.equals(EdTxtDiaphSteno.getText().toString()) && !str2Comp.equals(EdTxtIsoSteno.getText().toString()) && !str2Comp.equals(EdTxtEV.getText().toString())) {
 
 			try {
 				float N = Float.valueOf(EdTxtDiaphSteno.getText().toString());
 				float Iso = Float.valueOf(EdTxtIsoSteno.getText().toString());
 
-				float Ev = Float.valueOf(new String(EdTxtEV.getText()
-						.toString().replace(",", ".")));
+				float Ev = Float.valueOf(new String(EdTxtEV.getText().toString().replace(",", ".")));
 
 				calc = -(Ev + log2(Iso / 100) - log2(N * N));
 
@@ -522,8 +501,7 @@ public class Exposition extends Activity implements OnClickListener,
 																// ^1.48
 					break;
 				case 6:// "Adox CHS Art 25
-					Vitesse = (float) (0.134353883987194 * Math.pow(Vitesse,
-							1.34968890243641) + Vitesse);
+					Vitesse = (float) (0.134353883987194 * Math.pow(Vitesse, 1.34968890243641) + Vitesse);
 					break;
 				case 7:// Kodak 400TX
 					a = 0.169;
@@ -607,12 +585,8 @@ public class Exposition extends Activity implements OnClickListener,
 		double a8 = 0.00000000000688970964188516;// e-12;
 		double a9 = -0.0000000000000141355556089969;// e-14;
 
-		float Vitesse = (float) (a0 + a1 * vit + a2 * vit * vit + a3 * vit
-				* vit * vit + a4 * vit * vit * vit * vit + a5 * vit * vit * vit
-				* vit * vit + a6 * vit * vit * vit * vit * vit * vit + a7 * vit
-				* vit * vit * vit * vit * vit * vit + a8 * vit * vit * vit
-				* vit * vit * vit * vit * vit + a9 * vit * vit * vit * vit
-				* vit * vit * vit * vit * vit);
+		float Vitesse = (float) (a0 + a1 * vit + a2 * vit * vit + a3 * vit * vit * vit + a4 * vit * vit * vit * vit + a5 * vit * vit * vit * vit * vit + a6 * vit * vit * vit * vit * vit * vit + a7
+				* vit * vit * vit * vit * vit * vit * vit + a8 * vit * vit * vit * vit * vit * vit * vit * vit + a9 * vit * vit * vit * vit * vit * vit * vit * vit * vit);
 		return Vitesse;
 	}
 
